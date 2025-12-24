@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Background Music</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+    }
+  </style>
+</head>
+<body>
+
+<audio id="bg-music" loop preload="auto">
+  <source
+    src="https://shuraen.github.io/carrd-loop-test/dq11-adventure.ogg"
+    type="audio/mpeg"
+  >
+</audio>
+
+<script>
+  const audio = document.getElementById('bg-music');
+
+  function startMusic() {
+    audio.volume = 0.05;
+    audio.play().catch(() => {});
+    window.removeEventListener('scroll', startMusic);
+    document.removeEventListener('click', startMusic);
+  }
+
+  window.addEventListener('scroll', startMusic, { once: true });
+  document.addEventListener('click', startMusic, { once: true });
+</script>
+
+</body>
+</html>
